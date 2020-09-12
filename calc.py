@@ -48,6 +48,15 @@ class CalcApp:
         self.expression += str(num)
         self.equation.set(self.expression)
 
+    def equal(self):
+        try:
+            total = str(eval(self.expression))
+            self.equation.set(total)
+        except:
+            self.equation.set("error")
+            
+        self.expression = ""
+
 # Creating the app
 root = tk.Tk()
 calc_app = CalcApp(root)
