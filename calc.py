@@ -10,14 +10,15 @@ class CalcApp:
         root.title("Calculator")
 
         # Equation
-        equation = StringVar()
+        self.equation = StringVar()
+        self.expression = ""
 
         # Equation entry fields
         self.first_entry = Entry(root, textvariable=equation)
         self.first_entry.grid(columnspan=4, ipadx=70, pady=(5, 0))
 
         # Setting initial value
-        equation.set("Enter your expression")
+        self.equation.set("Enter your expression")
 
         # Button first row
         self.button1 = Button(root, text=" 1 ", width=7, height=1, bg="#D4C13D", fg="white").grid(row=1, column=0)
@@ -42,6 +43,10 @@ class CalcApp:
         self.clear_button = Button(root, text="Clear", width=7, height=1, bg="#D4C13D", fg="white").grid(row=4, column=1, pady=(0,5))
         self.equal_button = Button(root, text=" = ", width=7, height=1, bg="#D4C13D", fg="white").grid(row=4, column=2, pady=(0,5))
         self.divide_button = Button(root, text=" / ", width=7, height=1, bg="#D4C13D", fg="white").grid(row=4, column=3, pady=(0,5))
+
+    def press(self, num):
+        self.expression += str(num)
+        self.equation.set(self.expression)
 
 # Creating the app
 root = tk.Tk()
