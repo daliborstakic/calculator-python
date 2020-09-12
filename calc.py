@@ -36,12 +36,12 @@ class CalcApp:
         self.button7 = Button(root, text=" 7 ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.press(7)).grid(row=3, column=0)
         self.button8 = Button(root, text=" 8 ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.press(8)).grid(row=3, column=1)
         self.button9 = Button(root, text=" 9 ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.press(9)).grid(row=3, column=2)
-        self.multiple_button = Button(root, text=" + ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.press("*")).grid(row=3, column=3)
+        self.multiple_button = Button(root, text=" * ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.press("*")).grid(row=3, column=3)
 
         # Fourth row
         self.button0 = Button(root, text=" 0 ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.press(0)).grid(row=4, column=0, pady=(0,5))
-        self.clear_button = Button(root, text="Clear", width=7, height=1, bg="#D4C13D", fg="white").grid(row=4, column=1, pady=(0,5))
-        self.equal_button = Button(root, text=" = ", width=7, height=1, bg="#D4C13D", fg="white").grid(row=4, column=2, pady=(0,5))
+        self.clear_button = Button(root, text="Clear", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.clear()).grid(row=4, column=1, pady=(0,5))
+        self.equal_button = Button(root, text=" = ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.equal()).grid(row=4, column=2, pady=(0,5))
         self.divide_button = Button(root, text=" / ", width=7, height=1, bg="#D4C13D", fg="white", command=lambda: self.press("/")).grid(row=4, column=3, pady=(0,5))
 
     def press(self, num):
@@ -56,6 +56,10 @@ class CalcApp:
             self.equation.set("error")
             
         self.expression = ""
+
+    def clear(self):
+        self.expression = ""
+        self.equation.set("")
 
 # Creating the app
 root = tk.Tk()
